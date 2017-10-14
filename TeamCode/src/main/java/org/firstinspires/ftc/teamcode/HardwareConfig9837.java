@@ -17,12 +17,12 @@ public class HardwareConfig9837 {
     public DcMotor  rightBackMotor  = null;
     //public LightSensor lightSensor = null;
     //public TouchSensor touchSensor = null;
-    public DcMotor spool, spool2 = null;
+    /*public DcMotor spool, spool2 = null;
     public DcMotor claw = null;
     public Servo arm1 = null;
     public Servo arm2 = null;
     public Servo beacon1 = null;
-    public Servo beacon2 = null;
+    public Servo beacon2 = null;*/
 
     /* local OpMode members. */
     HardwareMap hwMap           =  null;
@@ -43,37 +43,37 @@ public class HardwareConfig9837 {
         leftBackMotor = hwMap.dcMotor.get("left_back");
         rightFrontMotor  = hwMap.dcMotor.get("right_front");
         rightBackMotor  = hwMap.dcMotor.get("right_back");
-        spool = hwMap.dcMotor.get("spool");
+        /*spool = hwMap.dcMotor.get("spool");
         spool2 = hwMap.dcMotor.get("spool2");
         claw = hwMap.dcMotor.get("claw");
         arm1 = hwMap.servo.get("arm_1");
         arm2 = hwMap.servo.get("arm_2");
         beacon1 = hwMap.servo.get("beacon_1");
-        beacon2 = hwMap.servo.get("beacon_2");
+        beacon2 = hwMap.servo.get("beacon_2");*/
 
         // Set directions of motors
         leftFrontMotor.setDirection(DcMotor.Direction.FORWARD);
         leftBackMotor.setDirection(DcMotor.Direction.FORWARD);
         rightFrontMotor.setDirection(DcMotor.Direction.REVERSE);
         rightBackMotor.setDirection(DcMotor.Direction.REVERSE);
-        spool.setDirection(DcMotor.Direction.FORWARD);
+      /*  spool.setDirection(DcMotor.Direction.FORWARD);
         claw.setDirection(DcMotor.Direction.FORWARD);
-        arm1.setDirection(Servo.Direction.REVERSE);
+        arm1.setDirection(Servo.Direction.REVERSE);*/
 
         // Set all motors to zero power
         leftFrontMotor.setPower(0);
         leftBackMotor.setPower(0);
         rightFrontMotor.setPower(0);
         rightBackMotor.setPower(0);
-        spool.setPower(0);
+        /*spool.setPower(0);
         spool2.setPower(0);
-        claw.setPower(0);
+        claw.setPower(0);*/
 
-        //Set initial positions of servos
+        /*Set initial positions of servos
         arm1.setPosition(1);
         arm2.setPosition(1);
         beacon1.setPosition(1);
-        beacon2.setPosition(0);
+        beacon2.setPosition(0);*/
 
         // Set wheel motors to run with encoders.
         leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
