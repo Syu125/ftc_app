@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
@@ -39,10 +38,10 @@ public class HardwareConfig9837 {
         hwMap = ahwMap;
 
         // Define and Initialize Motors
-        leftFrontMotor   = hwMap.dcMotor.get("left_front");
-        leftBackMotor = hwMap.dcMotor.get("left_back");
-        rightFrontMotor  = hwMap.dcMotor.get("right_front");
-        rightBackMotor  = hwMap.dcMotor.get("right_back");
+        leftFrontMotor   = hwMap.dcMotor.get("left front");
+        leftBackMotor = hwMap.dcMotor.get("left back");
+        rightFrontMotor  = hwMap.dcMotor.get("right front");
+        rightBackMotor  = hwMap.dcMotor.get("right back");
         /*spool = hwMap.dcMotor.get("spool");
         spool2 = hwMap.dcMotor.get("spool2");
         claw = hwMap.dcMotor.get("claw");

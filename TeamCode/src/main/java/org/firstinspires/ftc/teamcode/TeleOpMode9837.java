@@ -1,5 +1,8 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 /**
  * Created by vaina on 10/13/2017.
  */
@@ -7,7 +10,7 @@ package org.firstinspires.ftc.teamcode;
 @TeleOp(name="TeleOpMode", group="Pushbot")
 //@Disabled
 
-public class TeleOpMode9837 {
+public class TeleOpMode9837 extends OpMode{
     /**
      * This file provides basic Telop driving for a Pushbot robot.
      * The code is structured as an Iterative OpMode
@@ -89,7 +92,7 @@ public class TeleOpMode9837 {
 
         // Lift
         //1-19 debug:  bug in the if conditionals for lift
-        if (gamepad1.a == true) {
+       /* if (gamepad1.a == true) {
             robot.spool.setPower(-1);
             robot.spool2.setPower(-1);
         }
@@ -135,7 +138,7 @@ public class TeleOpMode9837 {
 
         // Send telemetry message to signify robot running;
         telemetry.addData("left",  "%.2f", left);
-        telemetry.addData("right", "%.2f", right);
+        telemetry.addData("right", "%.2f", right); */
     }
 
     /*
