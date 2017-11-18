@@ -81,7 +81,7 @@ public class TeleOpMode9837 extends OpMode{
 
         // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
         double left = -gamepad1.left_stick_x;
-        double x = -gamepad1.right_stick_x;
+        double right = -gamepad1.right_stick_x;
         double theta = Math.atan(-gamepad1.right_stick_y/-gamepad2.right_stick_x);
         double theta2 = Math.asin(-gamepad1.right_stick_y/-gamepad2.right_stick_x);
         double power = Math.pow((Math.pow(-gamepad1.right_stick_y, 2) + Math.pow(-gamepad1.right_stick_x , 2)), 0.5);
@@ -93,7 +93,7 @@ public class TeleOpMode9837 extends OpMode{
         // GAMEPAD1 CONTROLS
 
         // Driving
-        if (x > 0) {
+        if (right > 0) {
             if ((-3 * Math.PI / 8) < theta && theta < (Math.PI / 8)) {                        //case A: diagonal right down
                 robot.leftFrontMotor.setPower(0);
                 robot.leftBackMotor.setPower(-power);
@@ -116,7 +116,7 @@ public class TeleOpMode9837 extends OpMode{
                 robot.rightBackMotor.setPower(-power);
             }
         }
-        else if (x < 0) {
+        else if (right < 0) {
             if ((-3 * Math.PI / 8) < theta && theta < (Math.PI / 8)) {                        //case D: diagonal right up
                 robot.leftFrontMotor.setPower(0);
                 robot.leftBackMotor.setPower(power);
@@ -139,6 +139,35 @@ public class TeleOpMode9837 extends OpMode{
                 robot.rightBackMotor.setPower(power);
             }
         }
+
+        if (left > 0){                                                                      //case I: turn right
+            robot.leftFrontMotor.setPower(power);
+            robot.leftBackMotor.setPower(power);
+            robot.rightFrontMotor.setPower(power);
+            robot.rightBackMotor.setPower(power);
+        } else if (left < 0){                                                               //case J: turn left
+            robot.leftFrontMotor.setPower(-power);
+            robot.leftFrontMotor.setPower(-power);
+            robot.rightFrontMotor.setPower(-power);
+            robot.rightBackMotor.setPower(-power);
+        }
+
+        if (gamepad1.right_bumper == true) {                                                //spool move in; grab glyph
+            robot.grabberIn(robot.grabberIn.getPosition() <= .99  ? 0 : robot.grabberIn.getPosition() - .01);
+            robot.grabberOut(robot.grabberOut.getPosition() >= .99  ? 1 : robot.grabberOut.getPosition() + .01);
+        }
+        else if (gamepad1.left_bumper == true){                                             //spool move out; release glyph
+            robot.grabberIn(robot.grabberIn.getPosition() >= .99 ? 1 : robot.grabberIn.getPosition() + .01);
+            robot.grabberOut(robot.grabberOut.getPosition() <= 0.99 ? 0 : robot.grabberOut.getPosition() - .01);
+        }
+
+        if (gamepad1.dpad_up == true){
+            
+        } else if (gamepad1.dpad_down == true){
+
+        }
+
+
 
         // Lift
         //1-19 debug:  bug in the if conditionals for lift

@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -19,9 +20,9 @@ public class HardwareConfig9837 {
     /*public DcMotor spool, spool2 = null;
     public DcMotor claw = null;
     public Servo arm1 = null;
-    public Servo arm2 = null;
-    public Servo beacon1 = null;
-    public Servo beacon2 = null;*/
+    public Servo arm2 = null;*/
+    public Servo grabberIn = null;
+    public Servo grabberOut = null;
 
     /* local OpMode members. */
     HardwareMap hwMap           =  null;
@@ -42,6 +43,8 @@ public class HardwareConfig9837 {
         leftBackMotor = hwMap.dcMotor.get("left back");
         rightFrontMotor  = hwMap.dcMotor.get("right front");
         rightBackMotor  = hwMap.dcMotor.get("right back");
+        grabberIn = hwMap.servo.get("grabber in");
+        grabberOut = hwMap.servo.get("grabber out");
         /*spool = hwMap.dcMotor.get("spool");
         spool2 = hwMap.dcMotor.get("spool2");
         claw = hwMap.dcMotor.get("claw");
@@ -55,6 +58,8 @@ public class HardwareConfig9837 {
         leftBackMotor.setDirection(DcMotor.Direction.FORWARD);
         rightFrontMotor.setDirection(DcMotor.Direction.REVERSE);
         rightBackMotor.setDirection(DcMotor.Direction.REVERSE);
+        grabberIn.setDirection(Servo.Direction.REVERSE);
+        grabberOut.setDirection(Servo.Direction.FORWARD);
       /*  spool.setDirection(DcMotor.Direction.FORWARD);
         claw.setDirection(DcMotor.Direction.FORWARD);
         arm1.setDirection(Servo.Direction.REVERSE);*/
@@ -70,9 +75,9 @@ public class HardwareConfig9837 {
 
         /*Set initial positions of servos
         arm1.setPosition(1);
-        arm2.setPosition(1);
-        beacon1.setPosition(1);
-        beacon2.setPosition(0);*/
+        arm2.setPosition(1);*/
+        grabberIn.setPosition(1);
+        grabberOut.setPosition(0);
 
         // Set wheel motors to run with encoders.
         leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -130,14 +135,24 @@ public class HardwareConfig9837 {
         rightBackMotor.setPower(-power);
     }
 
-    /***
-     *
-     * waitForTick implements a periodic delay. However, this acts like a metronome with a regular
-     * periodic tick.  This is used to compensate for varying processing times for each cycle.
-     * The function looks at the elapsed cycle time, and sleeps for the remaining time interval.
-     *
-     * @param periodMs  Length of wait cycle in mSec.
-     */
+    public void grabberOut(double v) {
+        grabberOut.setPosition(0);
+    }
+
+    public void grabberIn(double v){
+        grabberIn.setPosition(1);
+    }
+
+
+
+        /***
+         *
+         * waitForTick implements a periodic delay. However, this acts like a metronome with a regular
+         * periodic tick.  This is used to compensate for varying processing times for each cycle.
+         * The function looks at the elapsed cycle time, and sleeps for the remaining time interval.
+         *
+         * @param periodMs  Length of wait cycle in mSec.
+         */
     public void waitForTick(long periodMs) {
 
         long  remaining = periodMs - (long)period.milliseconds();
@@ -154,5 +169,7 @@ public class HardwareConfig9837 {
         // Reset the cycle clock for the next pass.
         period.reset();
     }
+
+
 }
 
