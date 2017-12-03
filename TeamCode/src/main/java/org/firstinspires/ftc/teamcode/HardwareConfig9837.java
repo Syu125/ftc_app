@@ -51,10 +51,10 @@ public class HardwareConfig9837 {
         beacon2 = hwMap.servo.get("beacon_2");*/
 
         // Set directions of motors
-        leftFrontMotor.setDirection(DcMotor.Direction.FORWARD);
-        leftBackMotor.setDirection(DcMotor.Direction.FORWARD);
-        rightFrontMotor.setDirection(DcMotor.Direction.REVERSE);
-        rightBackMotor.setDirection(DcMotor.Direction.REVERSE);
+        leftFrontMotor.setDirection(DcMotor.Direction.REVERSE);
+        leftBackMotor.setDirection(DcMotor.Direction.REVERSE);
+        rightFrontMotor.setDirection(DcMotor.Direction.FORWARD);
+        rightBackMotor.setDirection(DcMotor.Direction.FORWARD);
       /*  spool.setDirection(DcMotor.Direction.FORWARD);
         claw.setDirection(DcMotor.Direction.FORWARD);
         arm1.setDirection(Servo.Direction.REVERSE);*/

@@ -146,6 +146,13 @@ public class TeleOpMode9837 extends OpMode{
             robot.rightBackMotor.setPower(-power);
         }
 
+        if (x == 0 && leftX == 0) {
+            robot.leftFrontMotor.setPower(0);
+            robot.leftBackMotor.setPower(0);
+            robot.rightFrontMotor.setPower(0);
+            robot.rightBackMotor.setPower(0);
+        }
+
         // Lift
         //1-19 debug:  bug in the if conditionals for lift
         /*if (gamepad1.a == true) {
