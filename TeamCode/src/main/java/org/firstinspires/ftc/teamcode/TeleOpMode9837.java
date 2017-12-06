@@ -97,7 +97,7 @@ public class TeleOpMode9837 extends OpMode{
 
         // Direction Cases (Right joystick)
         if (x > 0) {
-            if ((-3 * Math.PI / 8) < theta && theta < (Math.PI / 8)) {                        //case A: diagonal right down
+            if ((-3 * Math.PI / 8) < theta && theta < (-Math.PI / 8)) {                        //case A: diagonal right down
                 robot.leftFrontMotor.setPower(0);
                 robot.leftBackMotor.setPower(-power);
                 robot.rightFrontMotor.setPower(power);
@@ -118,7 +118,7 @@ public class TeleOpMode9837 extends OpMode{
                 robot.rightFrontMotor.setPower(-power);
                 robot.rightBackMotor.setPower(-power);
             }
-        } else if (x < 0) {
+        } if (x < 0) {
             if ((-3 * Math.PI / 8) < theta && theta < (Math.PI / 8)) {                        //case D: diagonal right up
                 robot.leftFrontMotor.setPower(0);
                 robot.leftBackMotor.setPower(power);
