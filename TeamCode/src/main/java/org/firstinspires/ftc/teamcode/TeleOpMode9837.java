@@ -66,17 +66,33 @@ public class TeleOpMode9837 extends OpMode{
     public void loop() {
 
         double rightX = gamepad1.right_stick_x;
+        double rightY = gamepad1.right_stick_y;
 
-        if (gamepad1.right_stick_x == 0) {
+        if (rightX == 0 && rightY == 0) {
             robot.leftFrontMotor.setPower(0);
             robot.leftBackMotor.setPower(0);
             robot.rightFrontMotor.setPower(0);
             robot.rightBackMotor.setPower(0);
-        } else if (rightX > 0) {
+        } else if (rightX > 0) {                                // move right
             robot.leftFrontMotor.setPower(0.5);
             robot.leftBackMotor.setPower(-0.5);
             robot.rightFrontMotor.setPower(-0.5);
             robot.rightBackMotor.setPower(0.5);
+        } else if (rightX < 0) {                                // move left
+            robot.leftFrontMotor.setPower(-0.5);
+            robot.leftBackMotor.setPower(0.5);
+            robot.rightFrontMotor.setPower(0.5);
+            robot.rightBackMotor.setPower(-0.5);
+        } else if (rightY > 0) {                                // move up
+            robot.leftFrontMotor.setPower(0.5);
+            robot.leftBackMotor.setPower(0.5);
+            robot.rightFrontMotor.setPower(0.5);
+            robot.rightBackMotor.setPower(0.5);
+        } else if (rightY < 0) {
+            robot.leftFrontMotor.setPower(-0.5);
+            robot.leftBackMotor.setPower(-0.5);
+            robot.rightFrontMotor.setPower(-0.5);
+            robot.rightBackMotor.setPower(-0.5);
         }
 
         /*
@@ -225,17 +241,16 @@ public class TeleOpMode9837 extends OpMode{
         }
         if (gamepad1.y == true) {
             robot.beacon1.setPosition(robot.beacon1.getPosition() <= .01  ? 0 : robot.beacon1.getPosition() - .01);
-        }
+        }*/
 
         // Send telemetry message to signify robot running;
-        telemetry.addData("left",  "%.2f", left);
-        telemetry.addData("right", "%.2f", right);
-    }*/
+        telemetry.addData("right X",  "%.2f", gamepad1.right_stick_x);
+        //telemetry.addData("right", "%.2f", right);
+    }
 
     /*
      * Code to run ONCE after the driver hits STOP
      */
-    }
 
     @Override
     public void stop(){
