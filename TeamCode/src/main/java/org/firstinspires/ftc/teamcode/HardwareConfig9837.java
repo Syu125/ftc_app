@@ -77,7 +77,7 @@ public class HardwareConfig9837 {
         /*Set initial positions of servos
         arm1.setPosition(1);
         arm2.setPosition(1);*/
-        grabber.setPosition(0);
+        grabber.setPosition(0.5);
 
         // Set wheel motors to run with encoders.
         leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
