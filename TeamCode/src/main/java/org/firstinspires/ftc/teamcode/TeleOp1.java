@@ -7,29 +7,13 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
  * Created by aryand2799 on 11/4/2016.
  */
 
-@TeleOp(name="TeleOpMode", group="Pushbot")
+@TeleOp(name="TeleOp: Omni Wheels", group="Pushbot")
 //@Disabled
 
-public class TeleOpMode9837 extends OpMode{
-
-
-
-    /**
-     * This file provides basic Telop driving for a Pushbot robot.
-     * The code is structured as an Iterative OpMode
-     *
-     * This OpMode uses the common Pushbot hardware class to define the devices on the robot.
-     * All device access is managed through the HardwarePushbot class.
-     *
-     * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
-     * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
-     */
-
-
+public class TeleOp1 extends OpMode{
 
     /* Declare OpMode members. */
     HardwareConfig9837 robot = new HardwareConfig9837(); // use the class created to define a Pushbot's hardware
-    // could also use HardwarePushbotMatrix class.
 
     /*
      * Code to run ONCE when the driver hits INIT
@@ -88,7 +72,7 @@ public class TeleOpMode9837 extends OpMode{
             robot.leftBackMotor.setPower(0.5);
             robot.rightFrontMotor.setPower(0.5);
             robot.rightBackMotor.setPower(0.5);
-        } else if (rightY < 0) {
+        } else if (rightY < 0) {                               // move down
             robot.leftFrontMotor.setPower(-0.5);
             robot.leftBackMotor.setPower(-0.5);
             robot.rightFrontMotor.setPower(-0.5);
