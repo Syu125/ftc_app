@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
@@ -16,13 +15,14 @@ public class HardwareConfig9837 {
     public DcMotor rightFrontMotor = null;
     public DcMotor rightBackMotor  = null;
     public DcMotor lift = null;
+    public DcMotor grabber = null;
     //public LightSensor lightSensor = null;
     //public TouchSensor touchSensor = null;
     /*public DcMotor spool, spool2 = null;
     public DcMotor claw = null;
     public Servo arm1 = null;
     public Servo arm2 = null;*/
-    public Servo grabber = null;
+    //public Servo grabber = null;
 
     /* local OpMode members. */
     HardwareMap hwMap           =  null;
@@ -43,8 +43,9 @@ public class HardwareConfig9837 {
         leftBackMotor = hwMap.dcMotor.get("left back");
         rightFrontMotor  = hwMap.dcMotor.get("right front");
         rightBackMotor  = hwMap.dcMotor.get("right back");
-        grabber = hwMap.servo.get("grabber");
+        //grabber = hwMap.servo.get("grabber");
         lift = hwMap.dcMotor.get("lift");
+        grabber = hwMap.dcMotor.get("grabber");
         /*spool = hwMap.dcMotor.get("spool");
         spool2 = hwMap.dcMotor.get("spool2");
         claw = hwMap.dcMotor.get("claw");
@@ -58,7 +59,8 @@ public class HardwareConfig9837 {
         leftBackMotor.setDirection(DcMotor.Direction.REVERSE);
         rightFrontMotor.setDirection(DcMotor.Direction.FORWARD);
         rightBackMotor.setDirection(DcMotor.Direction.FORWARD);
-        grabber.setDirection(Servo.Direction.FORWARD);
+        grabber.setDirection(DcMotor.Direction.FORWARD);
+        //grabber.setDirection(Servo.Direction.FORWARD);
         lift.setDirection(DcMotor.Direction.REVERSE); //counterclockwise = up
       /*  spool.setDirection(DcMotor.Direction.FORWARD);
         claw.setDirection(DcMotor.Direction.FORWARD);
@@ -69,6 +71,7 @@ public class HardwareConfig9837 {
         leftBackMotor.setPower(0);
         rightFrontMotor.setPower(0);
         rightBackMotor.setPower(0);
+        grabber.setPower(0);
         lift.setPower(0);
         /*spool.setPower(0);
         spool2.setPower(0);
@@ -77,7 +80,7 @@ public class HardwareConfig9837 {
         /*Set initial positions of servos
         arm1.setPosition(1);
         arm2.setPosition(1);*/
-        grabber.setPosition(0.5);
+        //grabber.setPosition(0.5);
 
         // Set wheel motors to run with encoders.
         leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -91,6 +94,20 @@ public class HardwareConfig9837 {
 
         //Turn on LED of light sensor
         //lightSensor.enableLed(true);
+    }
+
+    public void moveFwd (double power) {
+        leftFrontMotor.setPower(power);
+        leftBackMotor.setPower(power);
+        rightFrontMotor.setPower(power);
+        rightBackMotor.setPower(power);
+    }
+
+    public void stop() {
+        leftFrontMotor.setPower(0);
+        leftBackMotor.setPower(0);
+        rightFrontMotor.setPower(0);
+        rightBackMotor.setPower(0);
     }
 
         /***

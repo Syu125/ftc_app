@@ -151,13 +151,13 @@ public class TeleOp2 extends OpMode{
         }*/
 
         if (gamepad1.dpad_right == true) {               //spool move in; grab glyph
-            robot.grabber.setPosition(0);
+            robot.grabber.setPower(0.1);
         }
         else if (gamepad1.dpad_left == true){          //spool move out; release glyph
-            robot.grabber.setPosition(1);
+            robot.grabber.setPower(-0.1);
         }
         else if (gamepad1.dpad_right == false && gamepad1.dpad_left == false){
-            robot.grabber.setPosition(0.5);
+            robot.grabber.setPower(0);
         }
 
         if (gamepad1.dpad_up == false && gamepad1.dpad_down == false){

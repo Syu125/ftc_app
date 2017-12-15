@@ -1,51 +1,67 @@
+/*
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+*/
 /**
  * Created by aryand2799 on 11/4/2016.
- */
+ *//*
+
 
 @TeleOp(name="TeleOp: Omni Wheels", group="Pushbot")
-//@Disabled
+@Disabled
 
 public class TeleOp1 extends OpMode{
 
-    /* Declare OpMode members. */
+    */
+/* Declare OpMode members. *//*
+
     HardwareConfig9837 robot = new HardwareConfig9837(); // use the class created to define a Pushbot's hardware
 
-    /*
+    */
+/*
      * Code to run ONCE when the driver hits INIT
-     */
+     *//*
+
     @Override
     public void init() {
-       /* Initialize the hardware variables.
+       */
+/* Initialize the hardware variables.
         * The init() method of the hardware class does all the work here
-        */
+        *//*
+
         robot.init(hardwareMap);
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "Hello Driver");    //
     }
 
-    /*
+    */
+/*
      * Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAY
-     */
+     *//*
+
     @Override
     public void init_loop() {
     }
 
-    /*
+    */
+/*
      * Code to run ONCE when the driver hits PLAY
-     */
+     *//*
+
     @Override
     public void start() {
     }
 
-    /*
+    */
+/*
      * Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP
-     */
+     *//*
+
     @Override
     public void loop() {
 
@@ -79,7 +95,8 @@ public class TeleOp1 extends OpMode{
             robot.rightBackMotor.setPower(-0.5);
         }
 
-        /*
+        */
+/*
         // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
         double leftX = -gamepad1.left_stick_x;
         double x = -gamepad1.right_stick_x;
@@ -160,7 +177,8 @@ public class TeleOp1 extends OpMode{
             robot.leftBackMotor.setPower(0);
             robot.rightFrontMotor.setPower(0);
             robot.rightBackMotor.setPower(0);
-        }*/
+        }*//*
+
 
         if (gamepad1.dpad_right == true) {               //spool move in; grab glyph
             robot.grabber.setPosition(robot.grabber.getPosition() <= 0.01 ? 0 : robot.grabber.getPosition() - .01);
@@ -183,7 +201,8 @@ public class TeleOp1 extends OpMode{
 
         // Lift
         //1-19 debug:  bug in the if conditionals for lift
-        /*if (gamepad1.a == true) {
+        */
+/*if (gamepad1.a == true) {
             robot.spool.setPower(-1);
             robot.spool2.setPower(-1);
         }
@@ -225,19 +244,23 @@ public class TeleOp1 extends OpMode{
         }
         if (gamepad1.y == true) {
             robot.beacon1.setPosition(robot.beacon1.getPosition() <= .01  ? 0 : robot.beacon1.getPosition() - .01);
-        }*/
+        }*//*
+
 
         // Send telemetry message to signify robot running;
         telemetry.addData("right X",  "%.2f", gamepad1.right_stick_x);
         //telemetry.addData("right", "%.2f", right);
     }
 
-    /*
+    */
+/*
      * Code to run ONCE after the driver hits STOP
-     */
+     *//*
+
 
     @Override
     public void stop(){
     }
 
 }
+*/
