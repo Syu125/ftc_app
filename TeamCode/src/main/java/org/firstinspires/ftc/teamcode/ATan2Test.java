@@ -4,13 +4,13 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 /**
- * Created by Delara on 11/3/2017.
+ * Created by Delara on 12/15/2017.
  */
 
-@TeleOp(name="TestWheels", group="Pushbot")
+@TeleOp(name="Test Atan2", group="Pushbot")
 //@Disabled
 
-public class TestWheels extends OpMode{
+public class ATan2Test extends OpMode{
 
     /* Declare OpMode members. */
     HardwareConfig9837 robot = new HardwareConfig9837(); // use the class created to define a Pushbot's hardware
@@ -49,25 +49,21 @@ public class TestWheels extends OpMode{
      */
     @Override
     public void loop() {
-        double leftY = -gamepad1.left_stick_y;
-        double rightY = -gamepad1.right_stick_y;
+        double y = -gamepad1.right_stick_y;
+        double x = gamepad1.right_stick_x;
+        double angle = Math.atan2(y,x);
+        double power = Math.pow((x*x) + (y*y), 0.5);
 
-        if (leftY > 0) {
-            robot.leftFrontMotor.setPower(1);
-        } else if (leftY < 0) {
-            robot.leftBackMotor.setPower(1);
+        if ((-Math.PI/8) < angle && angle < (Math.PI/8)) {
+            robot.leftBackMotor.setPower(-power);
+            robot.leftFrontMotor.setPower(power);
+            robot.rightBackMotor.setPower(power);
+            robot.rightFrontMotor.setPower(-power);
         } else {
-            robot.leftFrontMotor.setPower(0);
             robot.leftBackMotor.setPower(0);
-        }
-
-        if (rightY > 0){
-            robot.rightFrontMotor.setPower(1);
-        } else if (rightY < 0) {
-            robot.rightBackMotor.setPower(1);
-        } else {
-            robot.rightFrontMotor.setPower(0);
+            robot.leftFrontMotor.setPower(0);
             robot.rightBackMotor.setPower(0);
+            robot.rightFrontMotor.setPower(0);
         }
     }
 
