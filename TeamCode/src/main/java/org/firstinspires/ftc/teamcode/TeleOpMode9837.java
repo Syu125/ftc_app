@@ -162,7 +162,7 @@ public class TeleOpMode9837 extends OpMode{
         }
 
         if (gamepad1.dpad_up == true){
-            
+
         } else if (gamepad1.dpad_down == true){
 
         }
