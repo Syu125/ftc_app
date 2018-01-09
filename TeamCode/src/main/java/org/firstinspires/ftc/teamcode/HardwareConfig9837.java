@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -16,6 +17,7 @@ public class HardwareConfig9837 {
     public DcMotor rightBackMotor  = null;
     public DcMotor lift = null;
     public DcMotor grabber = null;
+    public ColorSensor colorSensor = null;
     //public LightSensor lightSensor = null;
     //public TouchSensor touchSensor = null;
     /*public DcMotor spool, spool2 = null;
@@ -46,6 +48,7 @@ public class HardwareConfig9837 {
         //grabber = hwMap.servo.get("grabber");
         lift = hwMap.dcMotor.get("lift");
         grabber = hwMap.dcMotor.get("grabber");
+        colorSensor = hwMap.colorSensor.get("color sensor");
         /*spool = hwMap.dcMotor.get("spool");
         spool2 = hwMap.dcMotor.get("spool2");
         claw = hwMap.dcMotor.get("claw");
@@ -108,6 +111,17 @@ public class HardwareConfig9837 {
         leftBackMotor.setPower(0);
         rightFrontMotor.setPower(0);
         rightBackMotor.setPower(0);
+    }
+
+    public boolean isBlue() {
+        int RED = colorSensor.red() * 50;
+        int BLUE = colorSensor.blue() * 50;
+        int GREEN = colorSensor.green() * 50;
+        if (BLUE > RED && BLUE > GREEN){
+            return true;
+        } else {
+            return false;
+        }
     }
 
         /***
