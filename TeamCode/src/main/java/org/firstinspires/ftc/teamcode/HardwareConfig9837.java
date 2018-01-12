@@ -88,11 +88,11 @@ public class HardwareConfig9837 {
         rightBackMotor.setPower(0);
     }
 
-    public boolean isBlue() {
+    public boolean isRed() {
         int RED = colorSensor.red() * 50;
         int BLUE = colorSensor.blue() * 50;
         int GREEN = colorSensor.green() * 50;
-        if (BLUE > RED && BLUE > GREEN){
+        if (RED > BLUE && RED > GREEN){
             return true;
         } else {
             return false;
