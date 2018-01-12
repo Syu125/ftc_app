@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
@@ -18,13 +19,8 @@ public class HardwareConfig9837 {
     public DcMotor lift = null;
     public DcMotor grabber = null;
     public ColorSensor colorSensor = null;
-    //public LightSensor lightSensor = null;
-    //public TouchSensor touchSensor = null;
-    /*public DcMotor spool, spool2 = null;
-    public DcMotor claw = null;
-    public Servo arm1 = null;
-    public Servo arm2 = null;*/
-    //public Servo grabber = null;
+    public Servo verticalServo = null;
+    public Servo horizontalServo = null;
 
     /* local OpMode members. */
     HardwareMap hwMap           =  null;
@@ -40,22 +36,16 @@ public class HardwareConfig9837 {
         // Save reference to Hardware map
         hwMap = ahwMap;
 
-        // Define and Initialize Motors
+        // Define and Initialize Motors and Sensors
         leftFrontMotor   = hwMap.dcMotor.get("left front");
         leftBackMotor = hwMap.dcMotor.get("left back");
         rightFrontMotor  = hwMap.dcMotor.get("right front");
         rightBackMotor  = hwMap.dcMotor.get("right back");
-        //grabber = hwMap.servo.get("grabber");
         lift = hwMap.dcMotor.get("lift");
         grabber = hwMap.dcMotor.get("grabber");
         colorSensor = hwMap.colorSensor.get("color sensor");
-        /*spool = hwMap.dcMotor.get("spool");
-        spool2 = hwMap.dcMotor.get("spool2");
-        claw = hwMap.dcMotor.get("claw");
-        arm1 = hwMap.servo.get("arm_1");
-        arm2 = hwMap.servo.get("arm_2");
-        beacon1 = hwMap.servo.get("beacon_1");
-        beacon2 = hwMap.servo.get("beacon_2");*/
+        verticalServo = hwMap.servo.get("vertical servo");
+        horizontalServo = hwMap.servo.get("horizontal servo");
 
         // Set directions of motors
         leftFrontMotor.setDirection(DcMotor.Direction.REVERSE);
@@ -63,11 +53,7 @@ public class HardwareConfig9837 {
         rightFrontMotor.setDirection(DcMotor.Direction.FORWARD);
         rightBackMotor.setDirection(DcMotor.Direction.FORWARD);
         grabber.setDirection(DcMotor.Direction.FORWARD);
-        //grabber.setDirection(Servo.Direction.FORWARD);
         lift.setDirection(DcMotor.Direction.REVERSE); //counterclockwise = up
-      /*  spool.setDirection(DcMotor.Direction.FORWARD);
-        claw.setDirection(DcMotor.Direction.FORWARD);
-        arm1.setDirection(Servo.Direction.REVERSE);*/
 
         // Set all motors to zero power
         leftFrontMotor.setPower(0);
@@ -76,27 +62,16 @@ public class HardwareConfig9837 {
         rightBackMotor.setPower(0);
         grabber.setPower(0);
         lift.setPower(0);
-        /*spool.setPower(0);
-        spool2.setPower(0);
-        claw.setPower(0);*/
 
-        /*Set initial positions of servos
-        arm1.setPosition(1);
-        arm2.setPosition(1);*/
-        //grabber.setPosition(0.5);
+        //Set initial positions of servos
+        verticalServo.setPosition(0);
+        horizontalServo.setPosition(0);
 
         // Set wheel motors to run with encoders.
         leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        //Define and Initialize Sensors
-        //lightSensor = hwMap.lightSensor.get("light_sensor");
-        //touchSensor = hwMap.touchSensor.get("touch_sensor");
-
-        //Turn on LED of light sensor
-        //lightSensor.enableLed(true);
     }
 
     public void moveFwd (double power) {
