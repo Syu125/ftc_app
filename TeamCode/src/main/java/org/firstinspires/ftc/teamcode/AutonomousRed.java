@@ -8,10 +8,10 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by Delara on 12/8/2017.
  */
 
-@Autonomous(name="Autonomous", group="Pushbot")
+@Autonomous(name="Autonomous Red", group="Pushbot")
 //@Disabled
 
-public class Autonomous1 extends LinearOpMode {
+public class AutonomousRed extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwareConfig9837 robot = new HardwareConfig9837();   // Use a Pushbot's hardware
@@ -34,8 +34,30 @@ public class Autonomous1 extends LinearOpMode {
         waitForStart();
 
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
-        robot.moveFwd(0.5);
-        sleep(500);
-        robot.stop();
+        robot.horizontalServo.setPosition(0.54);
+        sleep(1000);
+        robot.verticalServo.setPosition(0.73);
+        robot.colorSensor.enableLed(true);
+        sleep(2000);
+        if (robot.isRed()){
+            telemetry.addData("Color on right", "red");
+            telemetry.update();
+            sleep(1000);
+            robot.horizontalServo.setPosition(0.30);
+            sleep(1000);
+            robot.verticalServo.setPosition(0);
+            sleep(1000);
+            robot.horizontalServo.setPosition(0);
+        } else {
+            telemetry.addData("Color on right", "blue");
+            telemetry.update();
+            sleep(1000);
+            robot.horizontalServo.setPosition(0.70);
+            sleep(1000);
+            robot.verticalServo.setPosition(0);
+            sleep(1000);
+            robot.horizontalServo.setPosition(0);
+        }
+        robot.colorSensor.enableLed(false);
     }
 }
