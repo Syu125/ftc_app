@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by Delara on 12/8/2017.
  */
 
-@Autonomous(name="Autonomous Red", group="Pushbot")
+@Autonomous(name="Autonomous Red Left", group="Pushbot")
 //@Disabled
 
 public class AutonomousRed extends LinearOpMode {
@@ -36,7 +36,7 @@ public class AutonomousRed extends LinearOpMode {
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
         robot.horizontalServo.setPosition(0.54);
         sleep(1000);
-        robot.verticalServo.setPosition(0.73);
+        robot.verticalServo.setPosition(0.68);
         robot.colorSensor.enableLed(true);
         sleep(2000);
         if (robot.isRed()){
@@ -59,5 +59,10 @@ public class AutonomousRed extends LinearOpMode {
             robot.horizontalServo.setPosition(0);
         }
         robot.colorSensor.enableLed(false);
+        /*sleep(1000);
+        robot.turnRight(1);
+        sleep(500);
+        robot.moveFwd(1);
+        sleep(1000); */
     }
 }
