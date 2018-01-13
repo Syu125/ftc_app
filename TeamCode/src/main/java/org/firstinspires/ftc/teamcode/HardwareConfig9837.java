@@ -17,10 +17,11 @@ public class HardwareConfig9837 {
     public DcMotor rightFrontMotor = null;
     public DcMotor rightBackMotor  = null;
     public DcMotor lift = null;
-    public DcMotor grabber = null;
     public ColorSensor colorSensor = null;
     public Servo verticalServo = null;
     public Servo horizontalServo = null;
+    public Servo leftServo = null;
+    public Servo rightServo = null;
 
     /* local OpMode members. */
     HardwareMap hwMap           =  null;
@@ -42,17 +43,17 @@ public class HardwareConfig9837 {
         rightFrontMotor  = hwMap.dcMotor.get("right front");
         rightBackMotor  = hwMap.dcMotor.get("right back");
         lift = hwMap.dcMotor.get("lift");
-        grabber = hwMap.dcMotor.get("grabber");
         colorSensor = hwMap.colorSensor.get("color sensor");
         verticalServo = hwMap.servo.get("vertical servo");
         horizontalServo = hwMap.servo.get("horizontal servo");
+        leftServo = hwMap.servo.get("left servo");
+        rightServo = hwMap.servo.get("right servo");
 
         // Set directions of motors
         leftFrontMotor.setDirection(DcMotor.Direction.REVERSE);
         leftBackMotor.setDirection(DcMotor.Direction.REVERSE);
         rightFrontMotor.setDirection(DcMotor.Direction.FORWARD);
         rightBackMotor.setDirection(DcMotor.Direction.FORWARD);
-        grabber.setDirection(DcMotor.Direction.FORWARD);
         lift.setDirection(DcMotor.Direction.REVERSE); //counterclockwise = up
 
         // Set all motors to zero power
@@ -60,12 +61,13 @@ public class HardwareConfig9837 {
         leftBackMotor.setPower(0);
         rightFrontMotor.setPower(0);
         rightBackMotor.setPower(0);
-        grabber.setPower(0);
         lift.setPower(0);
 
         //Set initial positions of servos
         verticalServo.setPosition(0);
         horizontalServo.setPosition(0);
+        leftServo.setPosition(0);
+        rightServo.setPosition(1);
 
         // Set wheel motors to run with encoders.
         leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -81,11 +83,39 @@ public class HardwareConfig9837 {
         rightBackMotor.setPower(power);
     }
 
+    public void turnRight(double power) {
+        leftFrontMotor.setPower(power);
+        leftBackMotor.setPower(power);
+        rightFrontMotor.setPower(-power);
+        rightBackMotor.setPower(-power);
+    }
+
+    public void turnLeft(double power) {
+        leftFrontMotor.setPower(-power);
+        leftBackMotor.setPower(-power);
+        rightFrontMotor.setPower(power);
+        rightBackMotor.setPower(power);
+    }
+
     public void stop() {
         leftFrontMotor.setPower(0);
         leftBackMotor.setPower(0);
         rightFrontMotor.setPower(0);
         rightBackMotor.setPower(0);
+    }
+    
+    public void strafeRight(double power) {
+        leftFrontMotor.setPower(power);
+        leftBackMotor.setPower(-power);
+        rightFrontMotor.setPower(-power);
+        rightBackMotor.setPower(power);
+    }
+
+    public void strafeLeft(double power) {
+        leftFrontMotor.setPower(-power);
+        leftBackMotor.setPower(power);
+        rightFrontMotor.setPower(power);
+        rightBackMotor.setPower(-power);
     }
 
     public boolean isRed() {

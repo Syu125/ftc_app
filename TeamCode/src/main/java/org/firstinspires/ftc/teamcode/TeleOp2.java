@@ -67,21 +67,25 @@ public class TeleOp2 extends OpMode{
         }
 
         // Grabber
-        if (gamepad1.dpad_right == true) {                  //spool move in; grab glyph
-            robot.grabber.setPower(0.1);
-        } else if (gamepad1.dpad_left == true) {            //spool move out; release glyph
-            robot.grabber.setPower(-0.1);
-        } else if (gamepad1.dpad_right == false && gamepad1.dpad_left == false) {
-            robot.grabber.setPower(0);
+        if (gamepad1.dpad_right == true) {       // servos move in
+            robot.leftServo.setPosition(robot.leftServo.getPosition() >= 0.5 ? 0.5 : robot.leftServo.getPosition() + .02);
+            robot.rightServo.setPosition(robot.rightServo.getPosition() <= 0.4 ? 0.4 : robot.rightServo.getPosition() - .02);
+        }
+        else if (gamepad1.dpad_left == true){    // servos move out
+            robot.leftServo.setPosition(robot.leftServo.getPosition() <= 0.01 ? 0 : robot.leftServo.getPosition() - .02);
+            robot.rightServo.setPosition(robot.rightServo.getPosition() >= .99 ? 1 : robot.rightServo.getPosition() + .02);
+        } else {
+            robot.leftServo.setPosition(robot.leftServo.getPosition());
+            robot.rightServo.setPosition(robot.rightServo.getPosition());
         }
 
         // Lift
-        if (gamepad1.dpad_up == false && gamepad1.dpad_down == false) {
-            robot.lift.setPower(0);
-        } else if (gamepad1.dpad_up == true) {
+        if (gamepad1.dpad_up == true) {
             robot.lift.setPower(1);
         } else if (gamepad1.dpad_down == true) {
             robot.lift.setPower(-1);
+        } else {
+            robot.lift.setPower(0);
         }
     }
 

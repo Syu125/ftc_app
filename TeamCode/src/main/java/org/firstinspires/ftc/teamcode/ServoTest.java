@@ -71,8 +71,30 @@ public class ServoTest extends OpMode {
             robot.horizontalServo.setPosition(robot.horizontalServo.getPosition());
         }
 
-        telemetry.addData("vertical servo position: ", robot.verticalServo.getPosition());
-        telemetry.addData("horizontal servo position: ", robot.horizontalServo.getPosition());
+        if (gamepad1.dpad_left == true) {
+            robot.leftServo.setPosition(robot.leftServo.getPosition() <= 0.01 ? 0 : robot.leftServo.getPosition() - .01);
+        }
+        else if (gamepad1.dpad_right == true){
+            robot.leftServo.setPosition(robot.leftServo.getPosition() >= 0.5 ? 0.5 : robot.leftServo.getPosition() + .01);
+        }
+        else {
+            robot.leftServo.setPosition(robot.leftServo.getPosition());
+        }
+
+        if (gamepad1.dpad_down == true) {
+            robot.rightServo.setPosition(robot.rightServo.getPosition() <= 0.4 ? 0.4 : robot.rightServo.getPosition() - .01);
+        }
+        else if (gamepad1.dpad_up == true){
+            robot.rightServo.setPosition(robot.rightServo.getPosition() >= .99 ? 1 : robot.rightServo.getPosition() + .01);
+        }
+        else {
+            robot.rightServo.setPosition(robot.rightServo.getPosition());
+        }
+
+        telemetry.addData("vertical servo position", robot.verticalServo.getPosition());
+        telemetry.addData("horizontal servo position", robot.horizontalServo.getPosition());
+        telemetry.addData("left servo position", robot.leftServo.getPosition());
+        telemetry.addData("right servo position", robot.rightServo.getPosition());
     }
 
     @Override
