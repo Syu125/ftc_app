@@ -54,7 +54,7 @@ public class TeleOp2 extends OpMode{
         double rightX = gamepad1.right_stick_x;
 
         // Driving
-        if (rightX != 0) {
+        if (rightX > 0.5 || rightX < -0.5) {
             robot.leftFrontMotor.setPower(rightX);
             robot.leftBackMotor.setPower(-rightX);
             robot.rightFrontMotor.setPower(-rightX);
