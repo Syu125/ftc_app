@@ -55,28 +55,37 @@ public class TeleOp2 extends OpMode{
 
         // Driving
         if (rightX > 0.5 || rightX < -0.5) {
-            robot.leftFrontMotor.setPower(rightX);
-            robot.leftBackMotor.setPower(-rightX);
-            robot.rightFrontMotor.setPower(-rightX);
-            robot.rightBackMotor.setPower(rightX);
+            double slowRightX = rightX/1.5;
+            robot.leftFrontMotor.setPower(slowRightX);
+            robot.leftBackMotor.setPower(-slowRightX);
+            robot.rightFrontMotor.setPower(-slowRightX);
+            robot.rightBackMotor.setPower(slowRightX);
         } else {
-            robot.leftFrontMotor.setPower(left);
-            robot.leftBackMotor.setPower(left);
-            robot.rightFrontMotor.setPower(right);
-            robot.rightBackMotor.setPower(right);
+            double slowLeft = left/1.5;
+            double slowRight = right/1.5;
+            robot.leftFrontMotor.setPower(slowLeft);
+            robot.leftBackMotor.setPower(slowLeft);
+            robot.rightFrontMotor.setPower(slowRight);
+            robot.rightBackMotor.setPower(slowRight);
         }
 
         // Grabber
         if (gamepad1.dpad_right == true) {       // servos move in
-            robot.leftServo.setPosition(robot.leftServo.getPosition() >= 0.5 ? 0.5 : robot.leftServo.getPosition() + .02);
-            robot.rightServo.setPosition(robot.rightServo.getPosition() <= 0.4 ? 0.4 : robot.rightServo.getPosition() - .02);
+            robot.leftServo.setPosition(robot.leftServo.getPosition() >= 0.98 ? 1.0 : robot.leftServo.getPosition() + .1);
+            robot.topLeftServo.setPosition(robot.topLeftServo.getPosition() >= 0.98 ? 1.0 : robot.topLeftServo.getPosition() + .1);
+            robot.rightServo.setPosition(robot.rightServo.getPosition() <= 0.02 ? 0.0 : robot.rightServo.getPosition() - .1);
+            robot.topRightServo.setPosition(robot.topRightServo.getPosition() <= 0.02 ? 0.0 : robot.topRightServo.getPosition() - .1);
         }
         else if (gamepad1.dpad_left == true){    // servos move out
-            robot.leftServo.setPosition(robot.leftServo.getPosition() <= 0.01 ? 0 : robot.leftServo.getPosition() - .02);
-            robot.rightServo.setPosition(robot.rightServo.getPosition() >= .99 ? 1 : robot.rightServo.getPosition() + .02);
+            robot.leftServo.setPosition(robot.leftServo.getPosition() <= 0.02 ? 0.0 : robot.leftServo.getPosition() - .1);
+            robot.topLeftServo.setPosition(robot.topLeftServo.getPosition() <= 0.02 ? 0.0 : robot.topLeftServo.getPosition() - .1);
+            robot.rightServo.setPosition(robot.rightServo.getPosition() >= .98 ? 1.0 : robot.rightServo.getPosition() + .1);
+            robot.topRightServo.setPosition(robot.topRightServo.getPosition() >= .98 ? 1.0 : robot.topRightServo.getPosition() + .1);
         } else {
             robot.leftServo.setPosition(robot.leftServo.getPosition());
+            robot.topLeftServo.setPosition(robot.topLeftServo.getPosition());
             robot.rightServo.setPosition(robot.rightServo.getPosition());
+            robot.topRightServo.setPosition(robot.topRightServo.getPosition());
         }
 
         // Lift

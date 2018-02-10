@@ -21,7 +21,9 @@ public class HardwareConfig9837 {
     public Servo verticalServo = null;
     public Servo horizontalServo = null;
     public Servo leftServo = null;
+    public Servo topLeftServo = null;
     public Servo rightServo = null;
+    public Servo topRightServo = null;
 
     /* local OpMode members. */
     HardwareMap hwMap           =  null;
@@ -48,6 +50,8 @@ public class HardwareConfig9837 {
         horizontalServo = hwMap.servo.get("horizontal servo");
         leftServo = hwMap.servo.get("left servo");
         rightServo = hwMap.servo.get("right servo");
+        topLeftServo = hwMap.servo.get("top left servo");
+        topRightServo = hwMap.servo.get("top right servo");
 
         // Set directions of motors
         leftFrontMotor.setDirection(DcMotor.Direction.REVERSE);
@@ -67,7 +71,9 @@ public class HardwareConfig9837 {
         verticalServo.setPosition(0);
         horizontalServo.setPosition(0);
         leftServo.setPosition(0);
+        topLeftServo.setPosition(0);
         rightServo.setPosition(1);
+        topRightServo.setPosition(1);
 
         // Set wheel motors to run with encoders.
         leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -121,8 +127,7 @@ public class HardwareConfig9837 {
     public boolean isRed() {
         int RED = colorSensor.red() * 50;
         int BLUE = colorSensor.blue() * 50;
-        int GREEN = colorSensor.green() * 50;
-        if (RED > BLUE && RED > GREEN){
+        if (RED > BLUE){
             return true;
         } else {
             return false;

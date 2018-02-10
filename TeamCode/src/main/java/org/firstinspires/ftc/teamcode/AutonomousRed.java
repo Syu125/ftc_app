@@ -38,7 +38,7 @@ public class AutonomousRed extends LinearOpMode {
         sleep(1000);
         robot.verticalServo.setPosition(0.68);
         robot.colorSensor.enableLed(true);
-        sleep(2000);
+        sleep(1000);
         if (robot.isRed()){
             telemetry.addData("Color on right", "red");
             telemetry.update();

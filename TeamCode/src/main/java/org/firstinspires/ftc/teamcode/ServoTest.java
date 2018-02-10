@@ -72,29 +72,37 @@ public class ServoTest extends OpMode {
         }
 
         if (gamepad1.dpad_left == true) {
-            robot.leftServo.setPosition(robot.leftServo.getPosition() <= 0.01 ? 0 : robot.leftServo.getPosition() - .01);
+            robot.leftServo.setPosition(robot.leftServo.getPosition() >= 0.99 ? 1 : robot.leftServo.getPosition() + .01);
+            robot.topLeftServo.setPosition(robot.topLeftServo.getPosition() >= 0.99 ? 1 : robot.topLeftServo.getPosition() + .01);
         }
         else if (gamepad1.dpad_right == true){
-            robot.leftServo.setPosition(robot.leftServo.getPosition() >= 0.5 ? 0.5 : robot.leftServo.getPosition() + .01);
+            robot.leftServo.setPosition(robot.leftServo.getPosition() <= 0.01 ? 0 : robot.leftServo.getPosition() - .01);
+            robot.topLeftServo.setPosition(robot.topLeftServo.getPosition() <= 0.01 ? 0 : robot.topLeftServo.getPosition() - .01);
         }
         else {
             robot.leftServo.setPosition(robot.leftServo.getPosition());
+            robot.topLeftServo.setPosition(robot.topLeftServo.getPosition());
         }
 
         if (gamepad1.dpad_down == true) {
-            robot.rightServo.setPosition(robot.rightServo.getPosition() <= 0.4 ? 0.4 : robot.rightServo.getPosition() - .01);
+            robot.rightServo.setPosition(robot.rightServo.getPosition() <= 0.01 ? 1 : robot.rightServo.getPosition() - .01);
+            robot.topRightServo.setPosition(robot.topRightServo.getPosition() <= 0.01 ? 1 : robot.topRightServo.getPosition() - .01);
         }
         else if (gamepad1.dpad_up == true){
             robot.rightServo.setPosition(robot.rightServo.getPosition() >= .99 ? 1 : robot.rightServo.getPosition() + .01);
+            robot.topRightServo.setPosition(robot.topRightServo.getPosition() >= .99 ? 1 : robot.topRightServo.getPosition() + .01);
         }
         else {
             robot.rightServo.setPosition(robot.rightServo.getPosition());
+            robot.topRightServo.setPosition(robot.topRightServo.getPosition());
         }
 
         telemetry.addData("vertical servo position", robot.verticalServo.getPosition());
         telemetry.addData("horizontal servo position", robot.horizontalServo.getPosition());
         telemetry.addData("left servo position", robot.leftServo.getPosition());
+        telemetry.addData("top left servo position", robot.topLeftServo.getPosition());
         telemetry.addData("right servo position", robot.rightServo.getPosition());
+        telemetry.addData("top right servo position", robot.topRightServo.getPosition());
     }
 
     @Override
