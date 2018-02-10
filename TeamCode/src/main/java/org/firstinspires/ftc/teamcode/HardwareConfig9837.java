@@ -28,7 +28,7 @@ public class HardwareConfig9837 {
     /* local OpMode members. */
     HardwareMap hwMap           =  null;
     private ElapsedTime period  = new ElapsedTime();
-
+    HardwareConfig9837 robot = new HardwareConfig9837();
     /* Constructor */
     public HardwareConfig9837(){
 
@@ -127,6 +127,28 @@ public class HardwareConfig9837 {
     public boolean isRed() {
         int RED = colorSensor.red() * 50;
         int BLUE = colorSensor.blue() * 50;
+        // For color sensor, we want to check in multiple places
+        //Use a nested for loop to check each pos
+/*-----testing more accurate color tester (Anjali 2/10/18)
+        int numReds = 0;
+        int vertHeight = 3, horizWidth = 2;
+
+        for(double vert = 0; vert<vertHeight; vert=vert+1){       //check vertical positions (2 x 3 rectangle)
+            robot.verticalServo.setPosition(vert/10);
+            for(int horiz = 0; horiz<horizWidth; horiz++){
+                robot.horizontalServo.setPosition(horiz/10);
+                if(RED>BLUE){
+                    numReds++;
+                }
+            }
+        }
+        if(numReds/(vertHeight*horizWidth) >=0.5){
+            return true;
+        }
+        else{
+            return false;
+        }*/
+        //-----testing moving the color sensor to 6 positions and concluding a color
         if (RED > BLUE){
             return true;
         } else {
