@@ -24,17 +24,16 @@ import static android.R.attr.right;
 @TeleOp(name="TeleOpMode", group="Pushbot")
 //@Disabled
 
-public class TeleOpMode9837 extends OpMode{
-
+public class TeleOpMode9837 extends OpMode {
 
 
     /**
      * This file provides basic Telop driving for a Pushbot robot.
      * The code is structured as an Iterative OpMode
-     *
+     * <p>
      * This OpMode uses the common Pushbot hardware class to define the devices on the robot.
      * All device access is managed through the HardwarePushbot class.
-     *
+     * <p>
      * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
      * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
      */
@@ -42,7 +41,7 @@ public class TeleOpMode9837 extends OpMode{
 
 
        /* Declare OpMode members. */
-    HardwareConfig9837 robot       = new HardwareConfig9837(); // use the class created to define a Pushbot's hardware
+    HardwareConfig9837 robot = new HardwareConfig9837(); // use the class created to define a Pushbot's hardware
     // could also use HardwarePushbotMatrix class.
 
     /*
@@ -82,9 +81,9 @@ public class TeleOpMode9837 extends OpMode{
         // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
         double left = -gamepad1.left_stick_x;
         double right = -gamepad1.right_stick_x;
-        double theta = Math.atan(-gamepad1.right_stick_y/-gamepad2.right_stick_x);
-        double theta2 = Math.asin(-gamepad1.right_stick_y/-gamepad2.right_stick_x);
-        double power = Math.pow((Math.pow(-gamepad1.right_stick_y, 2) + Math.pow(-gamepad1.right_stick_x , 2)), 0.5);
+        double theta = Math.atan(-gamepad1.right_stick_y / -gamepad2.right_stick_x);
+        double theta2 = Math.asin(-gamepad1.right_stick_y / -gamepad2.right_stick_x);
+        double power = Math.pow((Math.pow(-gamepad1.right_stick_y, 2) + Math.pow(-gamepad1.right_stick_x, 2)), 0.5);
 
         // Claw trigger controls
         double clawOpen = gamepad1.left_trigger;
@@ -109,14 +108,13 @@ public class TeleOpMode9837 extends OpMode{
                 robot.leftBackMotor.setPower(0);
                 robot.rightFrontMotor.setPower(0);
                 robot.rightBackMotor.setPower(-power);
-            } else if ( (3*Math.PI/8) < theta2) {                                             //case G: moving forward
+            } else if ((3 * Math.PI / 8) < theta2) {                                             //case G: moving forward
                 robot.leftFrontMotor.setPower(power);
                 robot.leftBackMotor.setPower(power);
                 robot.rightFrontMotor.setPower(-power);
                 robot.rightBackMotor.setPower(-power);
             }
-        }
-        else if (right < 0) {
+        } else if (right < 0) {
             if ((-3 * Math.PI / 8) < theta && theta < (Math.PI / 8)) {                        //case D: diagonal right up
                 robot.leftFrontMotor.setPower(0);
                 robot.leftBackMotor.setPower(power);
@@ -132,7 +130,7 @@ public class TeleOpMode9837 extends OpMode{
                 robot.leftBackMotor.setPower(0);
                 robot.rightFrontMotor.setPower(0);
                 robot.rightBackMotor.setPower(power);
-            } else if ( (-3*Math.PI/8) < theta2) {                                            //case H: moving backward
+            } else if ((-3 * Math.PI / 8) < theta2) {                                            //case H: moving backward
                 robot.leftFrontMotor.setPower(-power);
                 robot.leftBackMotor.setPower(-power);
                 robot.rightFrontMotor.setPower(power);
@@ -140,18 +138,18 @@ public class TeleOpMode9837 extends OpMode{
             }
         }
 
-        if (left > 0){                                                                      //case I: turn right
+        if (left > 0) {                                                                      //case I: turn right
             robot.leftFrontMotor.setPower(power);
             robot.leftBackMotor.setPower(power);
             robot.rightFrontMotor.setPower(power);
             robot.rightBackMotor.setPower(power);
-        } else if (left < 0){                                                               //case J: turn left
+        } else if (left < 0) {                                                               //case J: turn left
             robot.leftFrontMotor.setPower(-power);
             robot.leftFrontMotor.setPower(-power);
             robot.rightFrontMotor.setPower(-power);
             robot.rightBackMotor.setPower(-power);
         }
-
+/*
         if (gamepad1.right_bumper == true) {                                                //spool move in; grab glyph
             robot.grabberIn(robot.grabberIn.getPosition() <= .99  ? 0 : robot.grabberIn.getPosition() - .01);
             robot.grabberOut(robot.grabberOut.getPosition() >= .99  ? 1 : robot.grabberOut.getPosition() + .01);
@@ -160,15 +158,15 @@ public class TeleOpMode9837 extends OpMode{
             robot.grabberIn(robot.grabberIn.getPosition() >= .99 ? 1 : robot.grabberIn.getPosition() + .01);
             robot.grabberOut(robot.grabberOut.getPosition() <= 0.99 ? 0 : robot.grabberOut.getPosition() - .01);
         }
+*/
+        if (gamepad1.dpad_up == true) {
 
-        if (gamepad1.dpad_up == true){
-
-        } else if (gamepad1.dpad_down == true){
+        } else if (gamepad1.dpad_down == true) {
 
         }
 
 
-
+/*
         // Lift
         //1-19 debug:  bug in the if conditionals for lift
         if (gamepad1.a == true) {
@@ -218,13 +216,12 @@ public class TeleOpMode9837 extends OpMode{
         // Send telemetry message to signify robot running;
         telemetry.addData("left",  "%.2f", left);
         telemetry.addData("right", "%.2f", right);
-    }
+    }/
+
+    */
 
     /*
      * Code to run ONCE after the driver hits STOP
      */
-    @Override
-    public void stop() {
     }
-
 }
